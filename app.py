@@ -38,16 +38,16 @@ default_qrcode_info = {
 
 
 class QrCodeForm(FlaskForm):
-    qrcode_data = StringField('Display Data', validators=[DataRequired()],
+    qrcode_data = TextAreaField('STRING DATA', validators=[DataRequired()],
                               render_kw={"placeholder": "https://github.com/"})
-    qrcode_gif_url = StringField('GIF URL',
+    qrcode_gif_url = TextAreaField('GIF URL',
                                  render_kw={"placeholder": "https://media.giphy.com/media/du3J3cXyzhj75IOgvA/giphy.gif"})
-    qrcode_color = StringField('Color', widget=ColorInput())
-    qrcode_color_acc = StringField('Color Accent', widget=ColorInput())
-    qrcode_bg_color = StringField('Background Color', widget=ColorInput())
-    qrcode_bg_color_acc = StringField('Background Color Accent',widget=ColorInput())
-    qrcode_border_size = IntegerField('Border Size', validators=[DataRequired(), NumberRange(min=1, max=10)])
-    qrcode_scale = IntegerField('Scale', validators=[DataRequired(), NumberRange(min=1, max=10)])
+    qrcode_color = StringField('COLOR', widget=ColorInput())
+    qrcode_color_acc = StringField('COLOR ACCENT', widget=ColorInput())
+    qrcode_bg_color = StringField('BACKGROUND COLOR', widget=ColorInput())
+    qrcode_bg_color_acc = StringField('BACKGROUND COLOR ACCENT',widget=ColorInput())
+    qrcode_border_size = IntegerField('BORDER SIZE', validators=[DataRequired(), NumberRange(min=1, max=10)])
+    qrcode_scale = IntegerField('SCALE', validators=[DataRequired(), NumberRange(min=1, max=10)])
     submit = SubmitField('Submit')
 
 

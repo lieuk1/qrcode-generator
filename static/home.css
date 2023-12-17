@@ -1,111 +1,96 @@
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
 body {
-  background-color: #FAFAFA;
+  margin: 0;
+  padding: 0;
+  background-color: #1E1E1E;
+}
+
+html, body, pre, code, kbd, samp {
+  font-family: "Lucida Console", "Courier New", monospace;
 }
 
 #content {
-  width: 40%;
-  min-width: 288px;
-  margin: auto;
-  border-radius: 6px;
-  overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
+
+#nav-container {
+  padding: 10px 20px;
+  background-color: #1A2C42;
 }
 
 #nav-title {
-  color: #FAFAFA;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 36px;
   margin: 0;
-  background-color: darkgreen;
-  padding: 12px 18px;
+  color: #B3B3B3;
+}
+
+#grid-container {
+  display: flex;
+  height: calc(100vh - 48.8px);
+}
+
+#empty-container {
+  flex: 0 0 20%;
+}
+
+#qrcode-container {
+  flex: 0 0 35%;
+}
+
+#form-container {
+  flex: 1;
+}
+
+#form-container {
+  background-color: #191919;
+}
+
+#qrcode-form > fieldset {
+  margin: 0;
+  border: 1px solid transparent;
+  padding: 14px;
 }
 
 .nes-field {
+  color: #999999;
   margin-bottom: 6px;
 }
 
 .nes-field > label {
-  color: darkgreen;
-  font-size: 18px;
-  display: inline-block;
-  margin-bottom: 2px;
-  font-weight: bold;
+  font-size: 14px;
 }
 
-.nes-field > input {
-  font-family: Arial, Helvetica, sans-serif;
-  border: 2px solid darkgreen;
-  border-radius: 2px;
-  padding: 4px 6px;
-  box-sizing: border-box;
-  width: 100%;
-}
-
-.color-fields > .nes-field > input,
-.background-fields > .nes-field > input {
-  /* border: 2px solid transparent; */
-}
-
-#qrcode-form > fieldset {
+.nes-field > textarea {
+  background-color: #272727;
+  color: #999;
   border: 1px solid transparent;
-  background-color: #0064001A;
-  padding: 24px 18px;
-  margin: 0;
-}
-
-#submit {
-  background-color: darkblue;
-  border: 1px solid darkblue;
   border-radius: 2px;
-  color: white;
-  padding: 6px 8px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: bold;
-  width: 100%;
-  cursor: pointer;
-  font-size: 18px;
+  width: calc(100% - 12px);
+  margin: 0;
+  padding: 6px;
 }
 
-.qrcode {
+.nes-field > hr {
+  color: #272727;
+  margin-top: 0px;
+  margin-bottom: 6px;
+}
+
+#qrcode {
   display: flex;
   justify-content: center;
-  background-color: green;
+  align-items: center;
+  background-color: #232323;
+  margin: 10px;
+  height: calc(60% - 20px);
 }
 
-.qrcode > img {
-  margin: 18px;
-}
-
-.color-fields,
-.background-fields,
-.size-fields {
-  display: flex;
-}
-
-.color-fields > .nes-field:first-child,
-.background-fields > .nes-field:first-child,
-.size-fields > .nes-field:first-child {
-  width: 50%;
-  margin-right: 0.25rem;
-}
-
-.color-fields > .nes-field:last-child,
-.background-fields > .nes-field:last-child,
-.size-fields > .nes-field:last-child {
-  width: 50%;
-  margin-left: 0.25rem;
-}
-
-#footer {
-  background-color: darkgreen;
-  color: #FAFAFA;
-  padding: 4px 10px;
-}
-
-#github {
-  text-align: end;
-}
-
-#github > a > img {
-  height: 32px;
+#color {
+  background-color: #232323;
+  margin: 10px;
+  height: calc(40% - 20px);
 }

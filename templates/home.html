@@ -3,104 +3,104 @@
   <head>
     <meta charset="utf-8" />
     <title>QR Codes</title>
-    <!-- <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet"> -->
-    <!-- <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet"> -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
-    <!-- <link href="https://unpkg.com/nes.css/css/nes.css" rel="stylesheet"> -->
-    <!-- <link rel="stylesheet" href="https://unpkg.com/terminal.css@0.7.2/dist/terminal.min.css" /> -->
-    <!-- <link href="https://fonts.cdnfonts.com/css/public-pixel" rel="stylesheet"> -->
-
-    <style>
-      html, body, pre, code, kbd, samp {
-        font-family: Arial, Helvetica, sans-serif;
-      }
-    </style>
   </head>
   <body class="terminal">
-    <div id="content" class="">
-    
+    <div id="content">
       <section id="nav-container">
-        <div id="title-container"><h1 id="nav-title">QR Code Generator</h1></div>
-      </section>
-
-      <section id="qrcode-container">
-        <div class="nes-container">
-          <div class="qrcode">
-            <img id="picture" src="data:image/png;base64,{{ qrcode_img_data }}">
-          </div>
+        <div id="title-container">
+          <h1 id="nav-title">QR Code Generator</h1>
         </div>
       </section>
+      <div id="grid-container">
+        <section id="empty-container" class="column">
+        </section>
+        <section id="form-container" class="column">
+          <form id="qrcode-form" method="POST" action="/">
+            <fieldset>
+              {{ form.csrf_token }}
 
-      <section id="form-container">
-        <form id="qrcode-form" method="POST" action="/">
-          <fieldset>
-            {{ form.csrf_token }}
-
-            <div class="data-fields nes-container">
-              <div class="nes-field">
-                {{ form.qrcode_data.label }} <br>
-                {{ form.qrcode_data(class="nes-input") }}
-              </div>
-
-              <div class="nes-field">
-                {{ form.qrcode_gif_url.label }} <br>
-                {{ form.qrcode_gif_url(class="nes-input") }}
-              </div>
-            </div>
-
-            <div class="style-fields nes-container">
-              <div class="color-fields">
+              <div class="data-fields">
                 <div class="nes-field">
-                  {{ form.qrcode_color.label }} <br>
-                  {{ form.qrcode_color(class="nes-input color-picker") }}
+                  {{ form.qrcode_data.label }} <br>
+                  <hr>
+                  {{ form.qrcode_data(class="nes-input") }}
                 </div>
 
                 <div class="nes-field">
-                  {{ form.qrcode_color_acc.label }} <br>
-                  {{ form.qrcode_color_acc(class="nes-input color-picker") }}
+                  {{ form.qrcode_gif_url.label }} <br>
+                  <hr>
+                  {{ form.qrcode_gif_url(class="nes-input") }}
                 </div>
               </div>
 
-              <div class="background-fields">
-                <div class="nes-field">
-                  {{ form.qrcode_bg_color.label }} <br>
-                  {{ form.qrcode_bg_color(class="nes-input color-picker") }}
+              <div class="style-fields">
+                <div class="color-fields">
+                  <div class="nes-field">
+                    {{ form.qrcode_color.label }} <br>
+                    <hr>
+                    {{ form.qrcode_color(class="nes-input color-picker") }}
+                  </div>
+
+                  <div class="nes-field">
+                    {{ form.qrcode_color_acc.label }} <br>
+                    <hr>
+                    {{ form.qrcode_color_acc(class="nes-input color-picker") }}
+                  </div>
                 </div>
 
-                <div class="nes-field">
-                  {{ form.qrcode_bg_color_acc.label }} <br>
-                  {{ form.qrcode_bg_color_acc(class="nes-input color-picker") }}
+                <div class="background-fields">
+                  <div class="nes-field">
+                    {{ form.qrcode_bg_color.label }} <br>
+                    <hr>
+                    {{ form.qrcode_bg_color(class="nes-input color-picker") }}
+                  </div>
+
+                  <div class="nes-field">
+                    {{ form.qrcode_bg_color_acc.label }} <br>
+                    <hr>
+                    {{ form.qrcode_bg_color_acc(class="nes-input color-picker") }}
+                  </div>
+                </div>
+
+                <div class="size-fields">
+                  <div class="nes-field">
+                    {{ form.qrcode_border_size.label }} <br>
+                    <hr>
+                    {{ form.qrcode_border_size(class="nes-input") }}
+                  </div>
+
+                  <div class="nes-field">
+                    {{ form.qrcode_scale.label }} <br>
+                    <hr>
+                    {{ form.qrcode_scale(class="nes-input") }}
+                  </div>
                 </div>
               </div>
 
-              <div class="size-fields">
-                <div class="nes-field">
-                  {{ form.qrcode_border_size.label }} <br>
-                  {{ form.qrcode_border_size(class="nes-input") }}
-                </div>
-
-                <div class="nes-field">
-                  {{ form.qrcode_scale.label }} <br>
-                  {{ form.qrcode_scale(class="nes-input") }}
-                </div>
+              <div class="submit-btn">
+                <button id="submit" class="nes-btn is-primary" type="submit" form="qrcode-form">Generate QR Code</button>
               </div>
-            </div>
-        
-            <div class="submit-btn">
-              <button id="submit" class="nes-btn is-primary" type="submit" form="qrcode-form">Generate QR Code</button>
-            </div>
-          </fieldset>
-        </form>
-      </section>
+            </fieldset>
+          </form>
+        </section>
+        <section id="qrcode-container" class="column">
+          <div id="qrcode">
+            <img id="picture" src="data:image/png;base64,{{ qrcode_img_data }}">
+          </div>
+          <div id="color">
 
-      <section id="footer-container">
+          </div>
+        </section>
+      </div>
+      <!-- <section id="footer-container">
         <div id="footer">
           <div id="github">
             <a href="https://github.com/" target="_blank" rel="noopener noreferrer"><img src="static/GitHub_Logo_White.png" alt="Girl in a jacket"></a>
           </div>
         </div>
-      </section>
-
+      </section> -->
     </div>
   </body>
 </html>
