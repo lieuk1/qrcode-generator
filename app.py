@@ -109,8 +109,8 @@ def home():
     qrcode_info = {}
 
     if form.validate_on_submit():
-        qrcode_info['data'] = form.qrcode_data.data
-        qrcode_info['gif_url'] = form.qrcode_gif_url.data
+        qrcode_info['data'] = form.qrcode_data.data.strip()
+        qrcode_info['gif_url'] = form.qrcode_gif_url.data.strip()
         qrcode_info['color'] = form.qrcode_color.data
         qrcode_info['color_acc'] = form.qrcode_color_acc.data
         qrcode_info['bg_color'] = form.qrcode_bg_color.data

@@ -55,26 +55,26 @@ html, body, pre, code, kbd, samp {
   padding: 14px;
 }
 
-.nes-field {
+.fields {
   color: #999999;
   margin-bottom: 6px;
 }
 
-.nes-field > label {
+.fields > label {
   font-size: 14px;
 }
 
-.nes-field > textarea {
+.fields > textarea {
   background-color: #272727;
   color: #999;
-  border: 1px solid transparent;
-  border-radius: 2px;
+  border: 1px solid #464646;
+  border-radius: 4px;
   width: calc(100% - 12px);
   margin: 0;
   padding: 6px;
 }
 
-.nes-field > hr {
+.fields > hr {
   color: #272727;
   margin-top: 0px;
   margin-bottom: 6px;
@@ -89,8 +89,13 @@ html, body, pre, code, kbd, samp {
   height: calc(60% - 20px);
 }
 
+#qrcode > img {
+  max-height: 100%;
+  max-width: 100%;
+}
+
 #color {
   background-color: #232323;
   margin: 10px;
-  height: calc(40% - 20px);
+  height: calc(40% - 10px);
 }
