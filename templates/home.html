@@ -121,9 +121,25 @@
             url: '/',
             data: {
               'qrcode_data': $('#qrcode_data').val(),
+              'gif_url': $('#qrcode_gif_url').val(),
             },
             success: function(response) {
               console.log($('#qrcode_data').val());
+              $("#picture").attr("src", `data:image/png;base64,${response}`);
+            }
+          });
+        });
+
+        $('#qrcode_gif_url').on('input', function(e) {
+          $.ajax({
+            type: 'POST',
+            url: '/',
+            data: {
+              'qrcode_data': $('#qrcode_data').val(),
+              'gif_url': $('#qrcode_gif_url').val(),
+            },
+            success: function(response) {
+              console.log($('#qrcode_gif_url').val());
               $("#picture").attr("src", `data:image/png;base64,${response}`);
             }
           });

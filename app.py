@@ -38,10 +38,10 @@ default_qrcode_info = {
 
 
 class QrCodeForm(FlaskForm):
-    qrcode_data = TextAreaField('STRING DATA', validators=[DataRequired()],
-                              render_kw={"placeholder": "https://github.com/"})
+    qrcode_data = TextAreaField('STRING DATA',
+                              render_kw={'placeholder': 'https://github.com/'})
     qrcode_gif_url = TextAreaField('GIF URL',
-                                 render_kw={"placeholder": "https://media.giphy.com/media/du3J3cXyzhj75IOgvA/giphy.gif"})
+                                 render_kw={'placeholder': 'https://media.giphy.com/media/du3J3cXyzhj75IOgvA/giphy.gif'})
     qrcode_color = StringField('COLOR', widget=ColorInput())
     qrcode_color_acc = StringField('COLOR ACCENT', widget=ColorInput())
     qrcode_bg_color = StringField('BACKGROUND COLOR', widget=ColorInput())
@@ -121,7 +121,8 @@ def home():
             try:
                 encoded_img_data = make_animated_qrcode(qrcode_info)
             except:
-                print("Could not generate animated QR code.\n")
+                print('Could not generate animated QR code. Generating regular QR code.')
+                encoded_img_data = make_qrcode(qrcode_info)
         else:
             encoded_img_data = make_qrcode(qrcode_info)
         return render_template('home.html',
@@ -129,7 +130,7 @@ def home():
                                form=form)
     elif request.method == 'POST':
         qrcode_info['data'] = request.values['qrcode_data'].strip()
-        qrcode_info['gif_url'] = default_qrcode_info['gif_url']
+        qrcode_info['gif_url'] = request.values['gif_url'].strip()
         qrcode_info['color'] = default_qrcode_info['color']
         qrcode_info['color_acc'] = default_qrcode_info['color_acc']
         qrcode_info['bg_color'] = default_qrcode_info['bg_color']
@@ -140,7 +141,8 @@ def home():
             try:
                 encoded_img_data = make_animated_qrcode(qrcode_info)
             except:
-                print("Could not generate animated QR code.\n")
+                print('Could not generate animated QR code. Generating regular QR code.')
+                encoded_img_data = make_qrcode(qrcode_info)
         else:
             encoded_img_data = make_qrcode(qrcode_info)
         return encoded_img_data.decode('utf-8')
