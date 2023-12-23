@@ -102,5 +102,33 @@
         </div>
       </section> -->
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> 
+    <script>
+      // document.getElementById('qrcode_data').addEventListener('input', function(e) {
+      //   console.log("Print Hello World");
+      // });
+
+      $(document).ready(function() {
+        $.ajaxSetup({
+          headers: {
+            "X-CSRFToken": "{{ csrf_token() }}"
+          }
+        });
+
+        $('#qrcode_data').on('input', function(e) {
+          $.ajax({
+            type: 'POST',
+            url: '/',
+            data: {
+              'qrcode_data': $('#qrcode_data').val(),
+            },
+            success: function(response) {
+              console.log($('#qrcode_data').val());
+              $("#picture").attr("src", `data:image/png;base64,${response}`);
+            }
+          });
+        });
+      });
+    </script>
   </body>
 </html>

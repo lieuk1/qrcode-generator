@@ -127,6 +127,24 @@ def home():
         return render_template('home.html',
                                qrcode_img_data=encoded_img_data.decode('utf-8'),
                                form=form)
+    elif request.method == 'POST':
+        qrcode_info['data'] = request.values['qrcode_data'].strip()
+        qrcode_info['gif_url'] = default_qrcode_info['gif_url']
+        qrcode_info['color'] = default_qrcode_info['color']
+        qrcode_info['color_acc'] = default_qrcode_info['color_acc']
+        qrcode_info['bg_color'] = default_qrcode_info['bg_color']
+        qrcode_info['bg_color_acc'] = default_qrcode_info['bg_color_acc']
+        qrcode_info['border_size'] = default_qrcode_info['border_size']
+        qrcode_info['scale'] = default_qrcode_info['scale']
+        if qrcode_info['gif_url']:
+            try:
+                encoded_img_data = make_animated_qrcode(qrcode_info)
+            except:
+                print("Could not generate animated QR code.\n")
+        else:
+            encoded_img_data = make_qrcode(qrcode_info)
+        return encoded_img_data.decode('utf-8')
+        
 
     form.qrcode_data.data = default_qrcode_info['data']
     form.qrcode_gif_url.data = default_qrcode_info['gif_url']
