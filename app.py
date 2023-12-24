@@ -108,27 +108,7 @@ def home():
     form = QrCodeForm()
     qrcode_info = {}
 
-    if form.validate_on_submit():
-        qrcode_info['data'] = form.qrcode_data.data.strip()
-        qrcode_info['gif_url'] = form.qrcode_gif_url.data.strip()
-        qrcode_info['color'] = form.qrcode_color.data
-        qrcode_info['color_acc'] = form.qrcode_color_acc.data
-        qrcode_info['bg_color'] = form.qrcode_bg_color.data
-        qrcode_info['bg_color_acc'] = form.qrcode_bg_color_acc.data
-        qrcode_info['border_size'] = form.qrcode_border_size.data
-        qrcode_info['scale'] = form.qrcode_scale.data
-        if qrcode_info['gif_url']:
-            try:
-                encoded_img_data = make_animated_qrcode(qrcode_info)
-            except:
-                print('Could not generate animated QR code. Generating regular QR code.')
-                encoded_img_data = make_qrcode(qrcode_info)
-        else:
-            encoded_img_data = make_qrcode(qrcode_info)
-        return render_template('home.html',
-                               qrcode_img_data=encoded_img_data.decode('utf-8'),
-                               form=form)
-    elif request.method == 'POST':
+    if request.method == 'POST':
         qrcode_info['data'] = request.values['qrcode_data'].strip()
         qrcode_info['gif_url'] = request.values['gif_url'].strip()
         qrcode_info['color'] = request.values['color']
@@ -146,7 +126,6 @@ def home():
         else:
             encoded_img_data = make_qrcode(qrcode_info)
         return encoded_img_data.decode('utf-8')
-        
 
     form.qrcode_data.data = default_qrcode_info['data']
     form.qrcode_gif_url.data = default_qrcode_info['gif_url']
