@@ -131,12 +131,12 @@ def home():
     elif request.method == 'POST':
         qrcode_info['data'] = request.values['qrcode_data'].strip()
         qrcode_info['gif_url'] = request.values['gif_url'].strip()
-        qrcode_info['color'] = default_qrcode_info['color']
-        qrcode_info['color_acc'] = default_qrcode_info['color_acc']
-        qrcode_info['bg_color'] = default_qrcode_info['bg_color']
-        qrcode_info['bg_color_acc'] = default_qrcode_info['bg_color_acc']
-        qrcode_info['border_size'] = default_qrcode_info['border_size']
-        qrcode_info['scale'] = default_qrcode_info['scale']
+        qrcode_info['color'] = request.values['color']
+        qrcode_info['color_acc'] = request.values['color_acc']
+        qrcode_info['bg_color'] = request.values['bg_color']
+        qrcode_info['bg_color_acc'] = request.values['bg_color_acc']
+        qrcode_info['border_size'] = int(request.values['border_size'])
+        qrcode_info['scale'] = int(request.values['scale'])
         if qrcode_info['gif_url']:
             try:
                 encoded_img_data = make_animated_qrcode(qrcode_info)

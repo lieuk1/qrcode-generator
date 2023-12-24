@@ -25,13 +25,13 @@
                 <div class="fields">
                   {{ form.qrcode_data.label }} <br>
                   <hr>
-                  {{ form.qrcode_data(class="nes-input") }}
+                  {{ form.qrcode_data(class="inputs") }}
                 </div>
 
                 <div class="fields">
                   {{ form.qrcode_gif_url.label }} <br>
                   <hr>
-                  {{ form.qrcode_gif_url(class="nes-input") }}
+                  {{ form.qrcode_gif_url(class="inputs") }}
                 </div>
               </div>
 
@@ -40,13 +40,13 @@
                   <div class="fields">
                     {{ form.qrcode_color.label }} <br>
                     <hr>
-                    {{ form.qrcode_color(class="nes-input color-picker") }}
+                    {{ form.qrcode_color(class="inputs color-picker") }}
                   </div>
 
                   <div class="fields">
                     {{ form.qrcode_color_acc.label }} <br>
                     <hr>
-                    {{ form.qrcode_color_acc(class="nes-input color-picker") }}
+                    {{ form.qrcode_color_acc(class="inputs color-picker") }}
                   </div>
                 </div>
 
@@ -54,13 +54,13 @@
                   <div class="fields">
                     {{ form.qrcode_bg_color.label }} <br>
                     <hr>
-                    {{ form.qrcode_bg_color(class="nes-input color-picker") }}
+                    {{ form.qrcode_bg_color(class="inputs color-picker") }}
                   </div>
 
                   <div class="fields">
                     {{ form.qrcode_bg_color_acc.label }} <br>
                     <hr>
-                    {{ form.qrcode_bg_color_acc(class="nes-input color-picker") }}
+                    {{ form.qrcode_bg_color_acc(class="inputs color-picker") }}
                   </div>
                 </div>
 
@@ -68,13 +68,13 @@
                   <div class="fields">
                     {{ form.qrcode_border_size.label }} <br>
                     <hr>
-                    {{ form.qrcode_border_size(class="nes-input") }}
+                    {{ form.qrcode_border_size(class="inputs") }}
                   </div>
 
                   <div class="fields">
                     {{ form.qrcode_scale.label }} <br>
                     <hr>
-                    {{ form.qrcode_scale(class="nes-input") }}
+                    {{ form.qrcode_scale(class="inputs") }}
                   </div>
                 </div>
               </div>
@@ -115,31 +115,21 @@
           }
         });
 
-        $('#qrcode_data').on('input', function(e) {
+        $('.inputs').on('input', function(e) {
           $.ajax({
             type: 'POST',
             url: '/',
             data: {
               'qrcode_data': $('#qrcode_data').val(),
               'gif_url': $('#qrcode_gif_url').val(),
+              'color': $('#qrcode_color').val(),
+              'color_acc': $('#qrcode_color_acc').val(),
+              'bg_color': $('#qrcode_bg_color').val(),
+              'bg_color_acc': $('#qrcode_bg_color_acc').val(),
+              'border_size': $('#qrcode_border_size').val(),
+              'scale': $('#qrcode_scale').val(),
             },
             success: function(response) {
-              console.log($('#qrcode_data').val());
-              $("#picture").attr("src", `data:image/png;base64,${response}`);
-            }
-          });
-        });
-
-        $('#qrcode_gif_url').on('input', function(e) {
-          $.ajax({
-            type: 'POST',
-            url: '/',
-            data: {
-              'qrcode_data': $('#qrcode_data').val(),
-              'gif_url': $('#qrcode_gif_url').val(),
-            },
-            success: function(response) {
-              console.log($('#qrcode_gif_url').val());
               $("#picture").attr("src", `data:image/png;base64,${response}`);
             }
           });
