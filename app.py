@@ -25,7 +25,7 @@ app.secret_key = foo
 
 csrf = CSRFProtect(app)
 
-default_qrcode_info = {
+DEFAULT_QRCODE_INFO = {
     'data': '',
     'gif_url': '',
     'color': 'black',
@@ -127,18 +127,18 @@ def home():
             encoded_img_data = make_qrcode(qrcode_info)
         return encoded_img_data.decode('utf-8')
 
-    form.qrcode_data.data = default_qrcode_info['data']
-    form.qrcode_gif_url.data = default_qrcode_info['gif_url']
-    form.qrcode_color.data = default_qrcode_info['color']
-    form.qrcode_color_acc.data = default_qrcode_info['color_acc']
-    form.qrcode_bg_color.data = default_qrcode_info['bg_color']
-    form.qrcode_bg_color_acc.data = default_qrcode_info['bg_color_acc']
-    form.qrcode_border_size.data = default_qrcode_info['border_size']
-    form.qrcode_scale.data = default_qrcode_info['scale']
+    form.qrcode_data.data = DEFAULT_QRCODE_INFO['data']
+    form.qrcode_gif_url.data = DEFAULT_QRCODE_INFO['gif_url']
+    form.qrcode_color.data = DEFAULT_QRCODE_INFO['color']
+    form.qrcode_color_acc.data = DEFAULT_QRCODE_INFO['color_acc']
+    form.qrcode_bg_color.data = DEFAULT_QRCODE_INFO['bg_color']
+    form.qrcode_bg_color_acc.data = DEFAULT_QRCODE_INFO['bg_color_acc']
+    form.qrcode_border_size.data = DEFAULT_QRCODE_INFO['border_size']
+    form.qrcode_scale.data = DEFAULT_QRCODE_INFO['scale']
     if form.qrcode_gif_url.data:
-        encoded_img_data = make_animated_qrcode(default_qrcode_info)
+        encoded_img_data = make_animated_qrcode(DEFAULT_QRCODE_INFO)
     else:
-        encoded_img_data = make_qrcode(default_qrcode_info)
+        encoded_img_data = make_qrcode(DEFAULT_QRCODE_INFO)
     return render_template('home.html',
                            qrcode_img_data=encoded_img_data.decode('utf-8'),
                            form=form)
