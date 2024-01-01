@@ -83,6 +83,14 @@ html, body, pre, code, kbd, samp {
   margin-bottom: 6px;
 }
 
+.fields > input[type="number"] {
+  background-color: #272727;
+  color: #999;
+  border: 1px solid #464646;
+  border-radius: 4px;
+  padding: 6px;
+}
+
 #qrcode {
   display: flex;
   justify-content: center;
