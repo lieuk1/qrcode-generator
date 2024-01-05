@@ -83,7 +83,9 @@
         </section>
         <section id="qrcode-container" class="column">
           <div id="qrcode">
+            <div class="spinner top"></div>
             <img id="picture" src="data:image/png;base64,{{ qrcode_img_data }}">
+            <div class="spinner bottom"></div>
           </div>
           <div id="color">
 
@@ -124,6 +126,12 @@
               'bg_color_acc': $('#qrcode_bg_color_acc').val(),
               'border_size': $('#qrcode_border_size').val(),
               'scale': $('#qrcode_scale').val(),
+            },
+            beforeSend: function() {
+              $(".spinner").show();
+            },
+            complete: function() {
+              $(".spinner").hide();
             },
             success: function(response) {
               $("#picture").attr("src", `data:image/png;base64,${response}`);

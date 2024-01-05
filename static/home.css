@@ -110,3 +110,23 @@ html, body, pre, code, kbd, samp {
   margin: 10px;
   height: calc(40% - 10px);
 }
+
+#qrcode {
+  position: relative;
+}
+.spinner {
+  position: absolute;
+  width: 100%;
+  display: none;
+  background-color: #B3B3B3;
+  width: 100%;
+  height: 2px;
+}
+.spinner.top {
+  top: 0;
+  left: 0;
+}
+.spinner.bottom {
+  bottom: 2px;
+  left: 0;
+}
