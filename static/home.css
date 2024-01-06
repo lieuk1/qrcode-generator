@@ -110,3 +110,21 @@ html, body, pre, code, kbd, samp {
   margin: 10px;
   height: calc(40% - 10px);
 }
+
+.color-picker-wrap {
+  width: 80px;
+  height: 30px;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+input[type="color"] {
+	width: 86px;
+  height: 36px;
+  margin: -3px;
+  padding: 0;
+  border: none;
+  border-radius: 40px;
+  background: none;
+  cursor: pointer;
+}

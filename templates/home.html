@@ -25,13 +25,13 @@
                 <div class="fields">
                   {{ form.qrcode_data.label }} <br>
                   <hr>
-                  {{ form.qrcode_data(class="inputs") }}
+                  {{ form.qrcode_data(class="inputs", autocomplete="off") }}
                 </div>
 
                 <div class="fields">
                   {{ form.qrcode_gif_url.label }} <br>
                   <hr>
-                  {{ form.qrcode_gif_url(class="inputs") }}
+                  {{ form.qrcode_gif_url(class="inputs", autocomplete="off") }}
                 </div>
               </div>
 
@@ -40,13 +40,17 @@
                   <div class="fields">
                     {{ form.qrcode_color.label }} <br>
                     <hr>
-                    {{ form.qrcode_color(class="inputs color-picker") }}
+                    <div class="color-picker-wrap">
+                      {{ form.qrcode_color(class="inputs color-picker", autocomplete="off") }}
+                    </div>
                   </div>
 
                   <div class="fields">
                     {{ form.qrcode_color_acc.label }} <br>
                     <hr>
-                    {{ form.qrcode_color_acc(class="inputs color-picker") }}
+                    <div class="color-picker-wrap">
+                      {{ form.qrcode_color_acc(class="inputs color-picker", autocomplete="off") }}
+                    </div>
                   </div>
                 </div>
 
@@ -54,13 +58,17 @@
                   <div class="fields">
                     {{ form.qrcode_bg_color.label }} <br>
                     <hr>
-                    {{ form.qrcode_bg_color(class="inputs color-picker") }}
+                    <div class="color-picker-wrap">
+                      {{ form.qrcode_bg_color(class="inputs color-picker", autocomplete="off") }}
+                    </div>
                   </div>
 
                   <div class="fields">
                     {{ form.qrcode_bg_color_acc.label }} <br>
                     <hr>
-                    {{ form.qrcode_bg_color_acc(class="inputs color-picker") }}
+                    <div class="color-picker-wrap">
+                      {{ form.qrcode_bg_color_acc(class="inputs color-picker", autocomplete="off") }}
+                    </div>
                   </div>
                 </div>
 
@@ -68,13 +76,13 @@
                   <div class="fields">
                     {{ form.qrcode_border_size.label }} <br>
                     <hr>
-                    {{ form.qrcode_border_size(class="inputs") }}
+                    {{ form.qrcode_border_size(class="inputs", autocomplete="off") }}
                   </div>
 
                   <div class="fields">
                     {{ form.qrcode_scale.label }} <br>
                     <hr>
-                    {{ form.qrcode_scale(class="inputs") }}
+                    {{ form.qrcode_scale(class="inputs", autocomplete="off") }}
                   </div>
                 </div>
               </div>
