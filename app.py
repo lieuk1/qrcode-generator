@@ -28,10 +28,10 @@ csrf = CSRFProtect(app)
 DEFAULT_QRCODE_INFO = {
     'data': '',
     'gif_url': '',
-    'color': 'black',
-    'color_acc': 'black',
-    'bg_color': '#FAFAFA',
-    'bg_color_acc': '#FAFAFA',
+    'color': '#000000',
+    'color_acc': '#000000',
+    'bg_color': '#fafafa',
+    'bg_color_acc': '#fafafa',
     'border_size': 1,
     'scale': 10,
 }
@@ -141,4 +141,5 @@ def home():
         encoded_img_data = make_qrcode(DEFAULT_QRCODE_INFO)
     return render_template('home.html',
                            qrcode_img_data=encoded_img_data.decode('utf-8'),
-                           form=form)
+                           form=form,
+                           qrcode_info=DEFAULT_QRCODE_INFO)

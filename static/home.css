@@ -128,3 +128,18 @@ input[type="color"] {
   background: none;
   cursor: pointer;
 }
+
+.cp-container {
+  display: flex;
+  position: relative;
+}
+
+.color-picker-val {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  font-size: 14px;
+}
