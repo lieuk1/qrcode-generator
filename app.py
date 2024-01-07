@@ -43,9 +43,13 @@ class QrCodeForm(FlaskForm):
     qrcode_gif_url = TextAreaField('GIF URL',
                                  render_kw={'placeholder': 'https://media.giphy.com/media/du3J3cXyzhj75IOgvA/giphy.gif'})
     qrcode_color = StringField('COLOR', widget=ColorInput())
+    qrcode_color_hex = StringField('COLOR')
     qrcode_color_acc = StringField('COLOR ACCENT', widget=ColorInput())
+    qrcode_color_acc_hex = StringField('COLOR ACCENT')
     qrcode_bg_color = StringField('BACKGROUND COLOR', widget=ColorInput())
+    qrcode_bg_color_hex = StringField('BACKGROUND COLOR')
     qrcode_bg_color_acc = StringField('BACKGROUND COLOR ACCENT',widget=ColorInput())
+    qrcode_bg_color_acc_hex = StringField('BACKGROUND COLOR ACCENT')
     qrcode_border_size = IntegerField('BORDER SIZE', validators=[DataRequired(), NumberRange(min=1, max=10)])
     qrcode_scale = IntegerField('SCALE', validators=[DataRequired(), NumberRange(min=1, max=10)])
     submit = SubmitField('Submit')
@@ -129,10 +133,10 @@ def home():
 
     form.qrcode_data.data = DEFAULT_QRCODE_INFO['data']
     form.qrcode_gif_url.data = DEFAULT_QRCODE_INFO['gif_url']
-    form.qrcode_color.data = DEFAULT_QRCODE_INFO['color']
-    form.qrcode_color_acc.data = DEFAULT_QRCODE_INFO['color_acc']
-    form.qrcode_bg_color.data = DEFAULT_QRCODE_INFO['bg_color']
-    form.qrcode_bg_color_acc.data = DEFAULT_QRCODE_INFO['bg_color_acc']
+    form.qrcode_color.data = form.qrcode_color_hex.data = DEFAULT_QRCODE_INFO['color']
+    form.qrcode_color_acc.data = form.qrcode_color_acc_hex.data = DEFAULT_QRCODE_INFO['color_acc']
+    form.qrcode_bg_color.data = form.qrcode_bg_color_hex.data = DEFAULT_QRCODE_INFO['bg_color']
+    form.qrcode_bg_color_acc.data = form.qrcode_bg_color_acc_hex.data = DEFAULT_QRCODE_INFO['bg_color_acc']
     form.qrcode_border_size.data = DEFAULT_QRCODE_INFO['border_size']
     form.qrcode_scale.data = DEFAULT_QRCODE_INFO['scale']
     if form.qrcode_gif_url.data:

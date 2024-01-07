@@ -131,15 +131,22 @@ input[type="color"] {
 
 .cp-container {
   display: flex;
-  position: relative;
 }
 
 .color-picker-val {
   display: flex;
   align-items: center;
-  position: absolute;
-  top: 0;
-  right: 0;
-  height: 100%;
+  flex-grow: 1;
+  justify-content: end;
   font-size: 14px;
+}
+
+.inputs-hex {
+  background-color: #272727;
+  color: #999;
+  border: 1px solid #464646;
+  border-radius: 4px;
+  margin: 0 0 0 12px;
+  padding: 6px;
+  width: 80px;
 }
