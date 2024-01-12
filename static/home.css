@@ -141,7 +141,7 @@ input[type="color"] {
   font-size: 14px;
 }
 
-.inputs-hex {
+.inputs.hex-field {
   background-color: #272727;
   color: #999;
   border: 1px solid #464646;
