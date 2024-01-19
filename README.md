@@ -224,7 +224,7 @@ Project Link: [https://github.com/lieuk1/qrcode-generator](https://github.com/li
 [license-shield]: https://img.shields.io/github/license/lieuk1/qrcode-generator.svg?style=for-the-badge
 [license-url]: https://github.com/lieuk1/qrcode-generator/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/linkedin_username
+[linkedin-url]: https://www.linkedin.com/in/krystelle-lieu-aa4110148/
 [product-screenshot]: images/screenshot.png
 [Flask]: https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white
 [Flask-url]: https://flask.palletsprojects.com/en/3.0.x/
