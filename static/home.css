@@ -1,111 +1,173 @@
+@media only screen and (max-width: 600px) {
+  #grid-container {
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  #empty-container {
+    display: none;
+  }
+}
+
 body {
-  background-color: #FAFAFA;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #1E1E1E;
+}
+
+body, pre, code, kbd, samp {
+  font-family: "Lucida Console", "Courier New", monospace;
 }
 
 #content {
-  width: 40%;
-  min-width: 288px;
-  margin: auto;
-  border-radius: 6px;
-  overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
+
+#nav-container {
+  padding: 10px 20px;
+  background-color: #1A2C42;
 }
 
 #nav-title {
-  color: #FAFAFA;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 36px;
   margin: 0;
-  background-color: darkgreen;
-  padding: 12px 18px;
+  color: #B3B3B3;
 }
 
-.nes-field {
-  margin-bottom: 6px;
+#grid-container {
+  display: flex;
+  min-height: calc(100vh - 48.8px);
+  min-height: -moz-calc(100vh - 48.8px);
+	min-height: -webkit-calc(100vh - 48.8px);
 }
 
-.nes-field > label {
-  color: darkgreen;
-  font-size: 18px;
-  display: inline-block;
-  margin-bottom: 2px;
-  font-weight: bold;
+#empty-container {
+  flex: 0 0 20%;
 }
 
-.nes-field > input {
-  font-family: Arial, Helvetica, sans-serif;
-  border: 2px solid darkgreen;
-  border-radius: 2px;
-  padding: 4px 6px;
-  box-sizing: border-box;
-  width: 100%;
+#qrcode-container {
+  flex: 0 0 35%;
 }
 
-.color-fields > .nes-field > input,
-.background-fields > .nes-field > input {
-  /* border: 2px solid transparent; */
+#form-container {
+  flex: 1;
+}
+
+#form-container {
+  background-color: #191919;
 }
 
 #qrcode-form > fieldset {
-  border: 1px solid transparent;
-  background-color: #0064001A;
-  padding: 24px 18px;
   margin: 0;
+  border: 1px solid transparent;
+  padding: 14px;
 }
 
-#submit {
-  background-color: darkblue;
-  border: 1px solid darkblue;
+.fields {
+  color: #999999;
+  margin-bottom: 6px;
+}
+
+.fields > label {
+  font-size: 14px;
+}
+
+.fields > textarea {
+  background-color: #272727;
+  color: #999;
+  border: 1px solid #464646;
   border-radius: 2px;
-  color: white;
-  padding: 6px 8px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: bold;
-  width: 100%;
-  cursor: pointer;
-  font-size: 18px;
+  width: calc(100% - 12px);
+  margin: 0;
+  padding: 6px;
+  resize: vertical;
 }
 
-.qrcode {
+.fields > hr {
+  color: #272727;
+  margin-top: 0px;
+  margin-bottom: 6px;
+}
+
+.fields > input[type="number"] {
+  background-color: #272727;
+  color: #999;
+  border: 1px solid #464646;
+  border-radius: 2px;
+  padding: 6px;
+}
+
+#qrcode {
   display: flex;
   justify-content: center;
-  background-color: green;
+  align-items: center;
+  background-color: #232323;
+  margin: 10px;
+  height: calc(60% - 20px);
 }
 
-.qrcode > img {
-  margin: 18px;
+#qrcode > img {
+  max-height: 100%;
+  max-width: 100%;
+  padding: 12px 0;
 }
 
-.color-fields,
-.background-fields,
-.size-fields {
+#color {
+  background-color: #232323;
+  margin: 10px;
+  height: calc(40% - 10px);
+}
+
+.color-picker-wrap {
+  width: 80px;
+  height: 30px;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+input[type="color"] {
+	width: 86px;
+  height: 36px;
+  margin: -3px;
+  padding: 0;
+  border: none;
+  border-radius: 40px;
+  background: none;
+  cursor: pointer;
+}
+
+.cp-container {
   display: flex;
 }
 
-.color-fields > .nes-field:first-child,
-.background-fields > .nes-field:first-child,
-.size-fields > .nes-field:first-child {
-  width: 50%;
-  margin-right: 0.25rem;
+.hex-label {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  justify-content: end;
+  font-size: 14px;
+  margin: 0 0 0 12px;
 }
 
-.color-fields > .nes-field:last-child,
-.background-fields > .nes-field:last-child,
-.size-fields > .nes-field:last-child {
-  width: 50%;
-  margin-left: 0.25rem;
+.inputs.hex-field {
+  background-color: #272727;
+  color: #999;
+  border: 1px solid #464646;
+  border-radius: 2px;
+  margin: 0 12px;
+  padding: 6px;
+  width: 80px;
 }
 
-#footer {
-  background-color: darkgreen;
-  color: #FAFAFA;
-  padding: 4px 10px;
+.invalid-icon {
+  display: flex;
+  align-items: center;
+  color: #b10010;
 }
 
-#github {
-  text-align: end;
-}
-
-#github > a > img {
-  height: 32px;
+.invalid-icon > .bi {
+  display: none;
 }
