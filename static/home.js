@@ -8,73 +8,64 @@ function toSixDigitHex(hexVal) {
 };
 
 $(document).ready(function() {
+    $('.inputs.color-picker').on('input', function(e) {
+        curInput = $(this);
+        // Update hex label
+        newColorPickerVal = curInput.val();
+        curInput.parent().parent().children('.hex-label').text(newColorPickerVal);
+        // Update hex input field value
+        curInput.parent().parent().children('.hex-field').val(newColorPickerVal);
+        // Color picker has built-in functionality to prevent invalid values.
+        // No error catching needed here.
+    });
+
+    $('.inputs.hex-field').on('input', function(e) {
+        curInput = $(this);
+        hexVal = curInput.val().replace('#','');
+        newHexVal = '';
+        if ((hexVal.length === 3 || hexVal.length === 6) && !isNaN(Number('0x' + hexVal))) {
+            newHexVal = hexVal.length === 3 ? toSixDigitHex(hexVal) : '#' + hexVal;
+            // Update hex label
+            curInput.parent().children('.hex-label').text(newHexVal);
+            // Update color picker value
+            curInput.parent().children('.color-picker-wrap').children('.color-picker').val(newHexVal);
+            // Hide invalid icon on success
+            curInput.parent().children('.invalid-icon').children('.bi').hide();
+        } 
+        else {
+            newHexVal = 'INVALID';
+            // Update hex label
+            curInput.parent().children('.hex-label').text(newHexVal);
+            // Display invalid icon on failure
+            curInput.parent().children('.invalid-icon').children('.bi').show();
+        }
+    });
+
+    // Color picker and hex field code must be updated first (above) 
+    // before AJAX request (below).
     $('.inputs').on('input', function(e) {
         curInput = $(this);
-        if (curInput.hasClass('hex-field')) {
-            // Trigger when hex input fields are changed. Will update color picker and hex label values.
-            var hexInputVals = {};
-            $('.inputs.hex-field').each(function(i, obj) {
-                hexVal = $(this).val().replace('#','');
-                if (hexVal.length === 3) {
-                    hexInputVals[$(this).attr('id')] = toSixDigitHex(hexVal);
-                } else {
-                    hexInputVals[$(this).attr('id')] = '#' + hexVal;
-                }
-            });
-            data = {
-                'qrcode_data': $('#qrcode_data').val(),
-                'gif_url': $('#qrcode_gif_url').val(),
-                'color': hexInputVals['qrcode_color_hex'],
-                'color_acc': hexInputVals['qrcode_color_acc_hex'],
-                'bg_color': hexInputVals['qrcode_bg_color_hex'],
-                'bg_color_acc': hexInputVals['qrcode_bg_color_acc_hex'],
-                'border_size': $('#qrcode_border_size').val(),
-                'scale': $('#qrcode_scale').val(),
-            };
-        } else {
-            data = {
-                'qrcode_data': $('#qrcode_data').val(),
-                'gif_url': $('#qrcode_gif_url').val(),
-                'color': $('#qrcode_color').val(),
-                'color_acc': $('#qrcode_color_acc').val(),
-                'bg_color': $('#qrcode_bg_color').val(),
-                'bg_color_acc': $('#qrcode_bg_color_acc').val(),
-                'border_size': $('#qrcode_border_size').val(),
-                'scale': $('#qrcode_scale').val(),
-            };
-        }
-
+        data = {
+            'qrcode_data': $('#qrcode_data').val(),
+            'gif_url': $('#qrcode_gif_url').val(),
+            'color': $('#qrcode_color').val(),
+            'color_acc': $('#qrcode_color_acc').val(),
+            'bg_color': $('#qrcode_bg_color').val(),
+            'bg_color_acc': $('#qrcode_bg_color_acc').val(),
+            'border_size': $('#qrcode_border_size').val(),
+            'scale': $('#qrcode_scale').val(),
+        };
         $.ajax({
-        type: 'POST',
-        url: '/',
-        data: data,
-        success: function(response) {
-            // Update qrcode
-            $("#picture").attr("src", `data:image/png;base64,${response}`);
-            if (curInput.hasClass('hex-field')) {
-                // Update hex labels
-                $('#color-val').text(hexInputVals['qrcode_color_hex']);
-                $('#color-acc-val').text(hexInputVals['qrcode_color_acc_hex']);
-                $('#bg-color-val').text(hexInputVals['qrcode_bg_color_hex']);
-                $('#bg-color-acc-val').text(hexInputVals['qrcode_bg_color_acc_hex']);
-                // Update color picker values
-                $('#qrcode_color').val(hexInputVals['qrcode_color_hex']);
-                $('#qrcode_color_acc').val(hexInputVals['qrcode_color_acc_hex']);
-                $('#qrcode_bg_color').val(hexInputVals['qrcode_bg_color_hex']);
-                $('#qrcode_bg_color_acc').val(hexInputVals['qrcode_bg_color_acc_hex']);
-            } else {
-                // Update hex labels
-                $('#color-val').text($('#qrcode_color').val());
-                $('#color-acc-val').text($('#qrcode_color_acc').val());
-                $('#bg-color-val').text($('#qrcode_bg_color').val());
-                $('#bg-color-acc-val').text($('#qrcode_bg_color_acc').val());
-                // Update hex color input values
-                $('#qrcode_color_hex').val($('#qrcode_color').val());
-                $('#qrcode_color_acc_hex').val($('#qrcode_color_acc').val());
-                $('#qrcode_bg_color_hex').val($('#qrcode_bg_color').val());
-                $('#qrcode_bg_color_acc_hex').val($('#qrcode_bg_color_acc').val());
+            type: 'POST',
+            url: '/',
+            data: data,
+            success: function(response) {
+                // Update qrcode
+                $("#picture").attr("src", `data:image/png;base64,${response}`);
+            },
+            error: function() {
+
             }
-        }
         });
     });
 });

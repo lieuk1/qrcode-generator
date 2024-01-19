@@ -79,7 +79,7 @@ body, pre, code, kbd, samp {
   background-color: #272727;
   color: #999;
   border: 1px solid #464646;
-  border-radius: 4px;
+  border-radius: 2px;
   width: calc(100% - 12px);
   margin: 0;
   padding: 6px;
@@ -96,7 +96,7 @@ body, pre, code, kbd, samp {
   background-color: #272727;
   color: #999;
   border: 1px solid #464646;
-  border-radius: 4px;
+  border-radius: 2px;
   padding: 6px;
 }
 
@@ -125,7 +125,7 @@ body, pre, code, kbd, samp {
   width: 80px;
   height: 30px;
   overflow: hidden;
-  border-radius: 4px;
+  border-radius: 2px;
 }
 
 input[type="color"] {
@@ -156,8 +156,18 @@ input[type="color"] {
   background-color: #272727;
   color: #999;
   border: 1px solid #464646;
-  border-radius: 4px;
-  margin: 0 0 0 12px;
+  border-radius: 2px;
+  margin: 0 12px;
   padding: 6px;
   width: 80px;
+}
+
+.invalid-icon {
+  display: flex;
+  align-items: center;
+  color: #b10010;
+}
+
+.invalid-icon > .bi {
+  display: none;
 }
